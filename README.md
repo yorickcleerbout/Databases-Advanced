@@ -15,7 +15,7 @@ The first task is to scrape the [Blockcain website](https://www.blockchain.com/b
 <br>
 **Step 2: Install required python packages**
 <br>
-<code>python -m install requirements.txt</code>
+<code>pip3 install -r requirements.txt</code>
 <br>
 <br>
 **Step 3: Make the python script executable (Linux)**
