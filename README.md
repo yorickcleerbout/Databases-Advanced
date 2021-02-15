@@ -22,6 +22,7 @@ The first task is to scrape the [Blockcain website](https://www.blockchain.com/b
 <br>
 <code>chmod +x scraper.py</code>
 <br>
+<br>
 **Step 4: Run the Script**
 <br>
 <code>python3 scraper.py</code>
