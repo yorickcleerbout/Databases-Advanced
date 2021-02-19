@@ -33,6 +33,7 @@ The first task is to scrape the [Blockcain website](https://www.blockchain.com/b
 
 At this point the highest amount in USD is printed to the terminal, I also added a feature that the highest amount in saved inside a <code>results.json</code> file where the date is sorted per date. By having this file you can select the highest trades on a specific day if you would like.
 <br>
+<br>
 **Json Output Format:**
 <br>
 ```
