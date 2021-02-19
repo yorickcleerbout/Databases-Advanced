@@ -1,4 +1,3 @@
-<img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" /><img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/><img alt="Pandas" src="https://img.shields.io/badge/pandas%20-%23150458.svg?&style=for-the-badge&logo=pandas&logoColor=white" />
 # Databases Advanced
 
 This repository is made as part of a assignment of the course 'Databases Advanced', the intention of this assignment is to get familiar with services like MongoDB, Docker, Virtual Machines etc. To keep this assignment clear and easy to understand we splitted this task in multiple smaller tasks.
@@ -27,3 +26,7 @@ The first task is to scrape the [Blockcain website](https://www.blockchain.com/b
 **Step 4: Run the Script**
 <br>
 <code>python3 scraper.py</code>
+
+### Output:
+
+At this point the highest amount in USD is printed to the terminal, I also added a feature that the highest amount in saved inside a <code>results.json</code> file where the date is sorted per date. By having this file you can select the highest trades on a specific day if you would like.

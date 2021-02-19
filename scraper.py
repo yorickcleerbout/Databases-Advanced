@@ -2,6 +2,26 @@ from bs4 import BeautifulSoup
 from requests import get
 import pandas as pd
 import time
+import json
+from datetime import datetime
+import os
+
+
+def saveToJson(data):
+    with open("./results.json", "w+") as f:
+        json.dump(data, f, indent=3)
+
+
+def readJson():
+    with open('./results.json', encoding='utf-8') as f:
+        return json.load(f)
+
+
+if not os.path.exists("./results.json"):
+    saveToJson({})
+
+
+results = {}
 
 
 def scrape():
@@ -23,10 +43,30 @@ def scrape():
 
     df = pd.DataFrame(newlist, columns=['Hash', 'Time', 'Amount (BTC)', 'Amount (USD)'])
 
-    final_df = df.sort_values(by=['Amount (USD)'], ascending=False)
-    print(final_df.head(1))
+    highest_df = df.sort_values(by=['Amount (USD)'], ascending=False).head(1)
+    print(highest_df)
+
+    # SAVING HIGHEST RESULT TO JSON FILE
+    try:
+        results = readJson()
+        today = datetime.now().strftime('%Y-%m-%d')
+
+        jsonObject = highest_df.to_json(orient='records')
+        object = json.loads(jsonObject.replace('[', '').replace(']', ''))
+
+        if f'{today}' in results:
+            results[f'{today}'].append(object)
+            saveToJson(results)
+        else:
+            results = {f"{today}": [object]}
+            saveToJson(results)
+    except:
+        print("ERROR -> Saving To Json")
 
 
 while True:
-    scrape()
+    try:
+        scrape()
+    except:
+        scrape()
     time.sleep(60)
