@@ -36,6 +36,7 @@ At this point the highest amount in USD is printed to the terminal, I also added
 <br>
 **Json Output Format:**
 <br>
+
 ```
 {
 	"yyyy-mm-dd": [
@@ -48,3 +49,58 @@ At this point the highest amount in USD is printed to the terminal, I also added
 	]
 }
 ```
+
+## Task 2: MongoDB
+
+The next objective is to save the highest BTC transaction to a [MongoDB](https://www.mongodb.com/) collection. In order to accomplish this objective you need to download and install MongoDB. As we are using an ubuntu virtual machine, this is quite easy by using the terminal.
+
+### Installation
+
+**Step 1: Install MongoDB**
+<br>
+<code>
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+</code>
+<br>
+<br>
+<code>
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+</code>
+<br>
+<br>
+<code>sudo apt-get install -y mongodb-org</code>
+<br>
+<br>
+**Step 2: Import python package**
+<br>
+If you didnt install all the python packages required for this project mentioned in Task 1 (Installed using requirements.txt file), you need to install the python package for mongodb manually.
+<br>
+<code>pip3 install pymongo</code>
+<br>
+<br>
+**Step 3: Start MongoDB Service**
+<br>
+<code>sudo systemctl start mongod</code>
+
+### Usage:
+
+For task 1 you had to run the <code>scraper.py</code> file to execute the scraper, in this part of the assignment I chanced it up a little bit. I created a file called <code>main.py</code>. From now on, the only file you need to run is <code>main.py</code> to use this project. As mentioned before you need to make this file executable in order to use it.<br>
+<br>(Reminder)<br>
+**Step 1: Clone my repository**
+<br>
+<code>git clone https://github.com/yorickcleerbout/Databases-Advanced.git</code>
+<br>
+<br>
+**Step 2: Install required python packages**
+<br>
+<code>pip3 install -r requirements.txt</code>
+<br>
+<br>
+**Step 3: Make the python script executable (Linux)**
+<br>
+<code>chmod +x main.py</code>
+<br>
+<br>
+**Step 4: Run the Script**
+<br>
+<code>python3 main.py</code>
