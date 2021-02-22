@@ -54,7 +54,7 @@ At this point the highest amount in USD is printed to the terminal, I also added
 
 The next objective is to save the highest BTC transaction to a [MongoDB](https://www.mongodb.com/) collection. In order to accomplish this objective you need to download and install MongoDB. As we are using an ubuntu virtual machine, this is quite easy by using the terminal.
 
-### Installation
+### Installation (Follow these steps or just run setup.sh)
 
 **Step 1: Install MongoDB**
 <br>
