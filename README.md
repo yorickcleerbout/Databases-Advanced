@@ -54,7 +54,7 @@ At this point the highest amount in USD is printed to the terminal, I also added
 
 The next objective is to save the highest BTC transaction to a [MongoDB](https://www.mongodb.com/) collection. In order to accomplish this objective you need to download and install MongoDB. As we are using an ubuntu virtual machine, this is quite easy by using the terminal.
 
-### Installation  (Follow these steps or just run setup.sh)
+### Installation (Follow these steps or just run setup_mongo.sh)
 
 **Step 1: Install MongoDB**
 <br>
@@ -104,3 +104,29 @@ For task 1 you had to run the <code>scraper.py</code> file to execute the scrape
 **Step 4: Run the Script**
 <br>
 <code>python3 main.py</code>
+
+## Task 3: Redis
+
+This task is all about the availability of the data during execution, Redis is a key-value paired database that I'm using to cache my scraped data temperary. The way I implemented Redis is after i scrape the data I immediatly "save" the data in a Redis database that holds the information for about 1 minute, when the data is in Redis my `parser.py` file gets the data out of Redis to filter for the highest value to be able to save this into a MongoDB.
+
+## Installation (Follow these steps or just run setup_redis.sh)
+
+**Step 1: Install Redis**
+<br>
+<code>sudo apt install redis-server</code>
+<br>
+<br>
+**Step 2: Import python package**
+<br>
+If you didnt install all the python packages required for this project mentioned in Task 1 (Installed using requirements.txt file), you need to install the python package for redis manually.
+<br>
+<code>pip3 install redis</code>
+<br>
+<br>
+**Step 3: Start Redis Service**
+<br>
+<code>sudo systemctl start redis</code>
+
+### Usage:
+
+As always just run the file `main.py` to use the full project.
