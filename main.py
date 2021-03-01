@@ -1,18 +1,23 @@
 import time
 from scraper import scrape
-from mongoDB import create_connection_to_collection
+from mongoDB import save_to_mongo
+from redisDB import cache_df
+from parser import filter_highest
 
 
 def main():
-    col = create_connection_to_collection()
-    data = scrape()
-    col.insert_one(data)
+    try:
+        data = scrape()
+    except:
+        data = scrape()
+
+    cache_df(data)
+
+    highestValue = filter_highest()
+    save_to_mongo(highestValue)
 
 
 if __name__ == "__main__":
     while True:
-        try:
-            main()
-        except:
-            main()
+        main()
         time.sleep(60)

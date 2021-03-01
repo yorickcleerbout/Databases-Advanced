@@ -47,6 +47,7 @@ def scrape():
     df = pd.DataFrame(newlist, columns=[
                       'Hash', 'Time', 'Amount (BTC)', 'Amount (USD)'])
 
+    # THIS LINE IS JUST HERE FOR THE JSON PART NOT THE TASK PART
     highest_df = df.sort_values(by=['Amount (USD)'], ascending=False).head(1)
 
     # SAVING HIGHEST RESULT TO JSON FILE
@@ -66,5 +67,5 @@ def scrape():
     except:
         print("ERROR -> Saving To Json")
 
-    # RETURNING JSON OBJECT TO STORE IN DATABASE
-    return object
+    # RETURNING DF TO SEND TO REDIS
+    return df
