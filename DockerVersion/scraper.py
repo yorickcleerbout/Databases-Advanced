@@ -40,8 +40,8 @@ def scrape():
 
 
 while True:
-    #try:
-    scrape()
-    #except:
-        #pass
+    try:
+        scrape()
+    except:
+        pass
     time.sleep(60)
