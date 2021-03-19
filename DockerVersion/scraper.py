@@ -34,6 +34,7 @@ def scrape():
                       'Hash', 'Time', 'Amount (BTC)', 'Amount (USD)'])
 
     # SAVE TO REDIS
+    print("About to Cache")
     cache_df(df)
     # return df
 
