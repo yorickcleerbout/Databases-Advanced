@@ -32,6 +32,7 @@ def save_to_mongo(data):
 while True:
     try:
         highestValue = filter_highest()
+        print("About to save to MongoDB")
         save_to_mongo(highestValue)
     except:
         pass
