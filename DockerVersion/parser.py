@@ -5,7 +5,7 @@ import json
 
 
 def get_df():
-    r = redis.Redis(host='localhost', port=6379, db=0)
+    r = redis.Redis(host='redis', port=6379, db=0)
     df = r.get('df')
     return pd.read_json(df)
 
@@ -16,7 +16,7 @@ def filter_highest():
 
 
 def create_connection_to_collection():
-    client = mongo.MongoClient("mongodb://127.0.0.1:27017")
+    client = mongo.MongoClient("mongodb://mongo:27017")
     transactions_db = client["Databases-Advanced"]
     return transactions_db["BTC-Transactions"]
 
