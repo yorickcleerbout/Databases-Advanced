@@ -158,9 +158,9 @@ Parser: `https://hub.docker.com/repository/docker/yorickcleerbout/parser`<br>
 
 Put the next code in a file with name `Dockerfile` and no extension or download my dockerfiles from this repository.
 
-**Scraper**
-`
-FROM ubuntu:latest AS scraper
+**Scraper**<br>
+
+```FROM ubuntu:latest AS scraper
 MAINTAINER yorickcleerbout
 COPY . .
 RUN apt-get update && apt-get install -y git
@@ -175,10 +175,13 @@ RUN pip3 install pymongo
 RUN pip3 install redis
 RUN cp "Databases-Advanced/DockerVersion/scraper.py" .
 CMD ["python3", "scraper.py"]
-`<br>
+```
+
 <br>
-**Parser**
-`
+
+**Parser**<br>
+
+```
 FROM ubuntu:latest AS parser
 MAINTAINER yorickcleerbout
 COPY . .
@@ -194,4 +197,29 @@ RUN pip3 install pymongo
 RUN pip3 install redis
 RUN cp "Databases-Advanced/DockerVersion/parser.py" .
 CMD ["python3", "parser.py"]
-`
+```
+
+**Mongo & Redis**<br>
+`docker pull mongo`<br>
+`docker pull redis`<br>
+
+### Transform these images into containers
+
+`docker run --name scraper {imageID}`<br>
+`docker run --name parser {imageID}`<br>
+`docker run -p 27017:27017 --name mongo mongo`<br>
+`docker run --name redis redis`<br>
+
+## Creating network & adding containers
+
+We need to create a network to connect these containers with each other.
+<br>
+`docker network create {networkName}`
+
+### Adding containers to the network
+
+`docker network connect {networkName} {containerName}`
+
+# Final Conclusion
+
+This assignment was an overal fun and educational experience. Python was ofcourse nothing new to me but to work with mongoDB, Redis and Docker was a totaly new for me. I hope I can do more of this kind of assignments in the future to further expand my knowledge and skills as part of a learning experience.
