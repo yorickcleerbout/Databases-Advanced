@@ -133,3 +133,14 @@ As always just run the file `main.py` to use the full project.
 
 ## Task 4: Docker
 
+For the last part of this assignment we had to transform our project into containers so we can run every single component in a docker container. What this does is, it makes it possible to run this project everywhere you want, the only thing you have to do is install docker (Windows, Linux or MacOS) and start the program.
+
+## Installation of Docker
+
+### Windows & MacOS
+
+`https://www.docker.com/products/docker-desktop`
+
+### Linux
+
+`sudo apt install docker.io`
