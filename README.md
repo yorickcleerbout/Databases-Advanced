@@ -144,3 +144,54 @@ For the last part of this assignment we had to transform our project into contai
 ### Linux
 
 `sudo apt install docker.io`
+
+## Building Docker containers
+
+You can pull my created images from my docker hub profile or you can create your own images using Dockerfiles.
+
+### Pull my images
+
+Scraper: `https://hub.docker.com/repository/docker/yorickcleerbout/scraper`<br>
+Parser: `https://hub.docker.com/repository/docker/yorickcleerbout/parser`<br>
+
+### Create your own images
+
+Put the next code in a file with name `Dockerfile` and no extension or download my dockerfiles from this repository.
+
+**Scraper**
+`
+FROM ubuntu:latest AS scraper
+MAINTAINER yorickcleerbout
+COPY . .
+RUN apt-get update && apt-get install -y git
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN git clone https://github.com/yorickcleerbout/Databases-Advanced.git
+RUN cd Databases-Advanced
+RUN pip3 install requests
+RUN pip3 install beautifulsoup4
+RUN pip3 install pandas
+RUN pip3 install pymongo
+RUN pip3 install redis
+RUN cp "Databases-Advanced/DockerVersion/scraper.py" .
+CMD ["python3", "scraper.py"]
+`<br>
+<br>
+**Parser**
+`
+FROM ubuntu:latest AS parser
+MAINTAINER yorickcleerbout
+COPY . .
+RUN apt-get update && apt-get install -y git
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN git clone https://github.com/yorickcleerbout/Databases-Advanced.git
+RUN cd Databases-Advanced
+RUN pip3 install requests
+RUN pip3 install beautifulsoup4
+RUN pip3 install pandas
+RUN pip3 install pymongo
+RUN pip3 install redis
+RUN cp "Databases-Advanced/DockerVersion/parser.py" .
+CMD ["python3", "parser.py"]
+`
