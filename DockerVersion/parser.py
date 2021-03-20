@@ -2,6 +2,7 @@ import pandas as pd
 import redis
 import pymongo as mongo
 import json
+import time
 
 
 def get_df():
@@ -36,3 +37,4 @@ while True:
         save_to_mongo(highestValue)
     except:
         pass
+    time.sleep(60)
