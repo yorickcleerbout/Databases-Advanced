@@ -11,4 +11,3 @@ docker network connect dba scraper
 docker network connect dba redis
 docker network connect dba parser
 docker network connect dba mongo
-echo "Done"
